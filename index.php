@@ -68,7 +68,7 @@ $this->need('header.php');
 
     <?php $this->need('sidebar.php'); ?>
     <script>
-        var app1 = new Vue({
+        new Vue({
             el: '#root1',
             data: {
                 mshow: true,
