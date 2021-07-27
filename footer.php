@@ -7,7 +7,7 @@
         <li><a href="https://beian.miit.gov.cn/"><?php $this->options->beian() ?></a></li>
         <li>开发中...</li>
     </nav>
-    <div id="gotop"><span class="icon-expand_less"></span></div> <!--返回顶部-->
+    <div id="gotop" class="animate__animated animate__fadeInRight"><span class="icon-expand_less"></span></div> <!--返回顶部-->
 </footer>
 <?php $this->footer(); ?>
 <script src="<?php $this->options->themeUrl('assets/js/main.js'); ?>"></script>
