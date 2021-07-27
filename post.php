@@ -10,7 +10,7 @@
             <div class="innerTbox">
                 <h3><?php $this->author(); ?></h3>
                 <p>
-                    <?php $this->date(Y年m月d日); ?> 阅读<?php $views = getPostViews($this); ?><?php echo $views; ?>
+                    <?php $this->date('Y年-m月-d日'); ?> 阅读<?php $views = getPostViews($this); ?><?php echo $views; ?>
                 </p>
             </div>
         </div>
