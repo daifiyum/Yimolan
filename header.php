@@ -14,7 +14,7 @@
     </title>
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/style.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/animate.min.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/agate.min.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/solarized-light.min.css'); ?>">
     <link rel="shortcut icon" href="<?php $this->options->themeUrl('assets/images/favicon.ico'); ?>" />
     <link rel="bookmark" href="<?php $this->options->themeUrl('assets/images/favicon.ico'); ?>" />
     <script src="<?php $this->options->themeUrl('assets/js/vue.min.js'); ?>"></script>
@@ -23,6 +23,7 @@
         hljs.highlightAll();
     </script>
     <?php $this->header(); ?>
+
 </head>
 
 <body>
@@ -45,7 +46,28 @@
                     <input type="text" placeholder="搜索些什么~" name="s">
                     <i class="icon-search" onclick="formSubmit()"></i>
                 </form>
+                <div class="msk">
+                    <!--音乐样式1-->
+                    <!--<div v-bind:class="{ music: plc, musics: plcs }" @click="play">-->
+                    <!--    <ul>-->
+                    <!--        <li></li>-->
+                    <!--        <li></li>-->
+                    <!--        <li></li>-->
+                    <!--    </ul>-->
+                    <!--    <audio id="audio" src="<?php $this->options->audiosrc() ?>" loop="loop"></audio>-->
+                    <!--</div>-->
+                    <div class="msec"> <!--音乐样式2-->
+                        <ul v-bind:class="{ music: plc, musics: plcs }" @click="play">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        </ul>
+                        <audio id="audio" src="<?php $this->options->audiosrc() ?>" loop="loop"></audio>
+                    </div>
+                    
+                    
                 <i class="icon-search startMobsearch" @click="mobSearStart"></i>
+                </div>
             </div>
 
             <form class="sec-search" action="" method="POST" v-show="secSearch">
@@ -65,7 +87,8 @@
                     <?php endwhile; ?>
                 </div>
                 <div>
-                    <p id="timetips"></p> <!--时间问候语-->
+                    
+                    <!--<p id="timetips"></p> 时间问候语-->
                 </div>
             </ul>
             <div id="mask-show" class="mask"></div>

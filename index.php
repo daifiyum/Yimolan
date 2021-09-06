@@ -15,21 +15,72 @@ $this->need('header.php');
 
 <div id="root1" class="content">
     <div class="mainContent">
+        <div class="tuijian">
+            <?php if (!empty($this->options->biimg) && in_array('open_biimg', $this->options->biimg)) : ?>
+            
+            <div class="ituip">
+            
+            <?php else : ?>
+            <div class="ituip" style="background-image: url(<?php $this->options->dimg() ?>);">
+            <?php endif; ?>
+            
+                <div class="itips">
+                    
+                   <!--<p id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></p>-->
+                   <p id="timetips"></p> <!--时间问候语-->
+                   <script>
+                       /*时间问候语*/
+(now = new Date()), (hour = now.getHours());
+if (hour < 6) {
+    document.getElementById("timetips").innerHTML = "凌晨好~";
+} else if (hour < 9) {
+    document.getElementById("timetips").innerHTML = "早上好~";
+} else if (hour < 12) {
+    document.getElementById("timetips").innerHTML = "上午好~";
+} else if (hour < 14) {
+    document.getElementById("timetips").innerHTML = "中午好~";
+} else if (hour < 17) {
+    document.getElementById("timetips").innerHTML = "下午好~";
+} else if (hour < 19) {
+    document.getElementById("timetips").innerHTML = "傍晚好~";
+} else if (hour < 22) {
+    document.getElementById("timetips").innerHTML = "晚上好~";
+} else {
+    document.getElementById("timetips").innerHTML = "午夜好~";
+}
+                   </script>
+                </div>
+                <div class="iclass">
+                    <ul class="icul">
+                        <!--<li><a href="#">标签云</a></li>-->
+                        <?php $this->widget('Widget_Metas_Category_List')->parse('<li><a href="{permalink}">{name}</a></li>'); ?>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
         <?php while ($this->next()) : ?>
-            <section onclick="window.open('<?php $this->permalink() ?>','_self')" class="contentCard animate__animated animate__fadeInUp">
+        <?php if ($this->hidden == 1) : ?>
+            <section class="contentCard pitmsback animate__animated animate__fadeInUp">
+        <?php else : ?>
+            <section class="contentCard animate__animated animate__fadeInUp">
+        <?php endif; ?>
                 <div class="gadget">
                     <span><?php $this->author(); ?></span>
                     <span class="plSpace"></span>
                     <span><?php timesince($this->created); ?></span>
+                    <?php if($this->category!=false): ?>
                     <span class="plSpace"></span>
+                    <?php endif; ?>
                     <span><?php $this->category(' · '); ?></span>
+                    
                 </div>
 
                 <a class="ititle" href="<?php $this->permalink() ?>">
                     <h2><?php $this->sticky() ?><?php $this->title() ?></h2>
                 </a>
 
-                <div class="itext">
+                <div onclick="window.open('<?php $this->permalink() ?>','_self')" class="itext">
                     <!--<?php echo $this->hidden; ?>-->
                     <?php if ($this->hidden == 1) : ?>
                         <p class="passw">文章已加密</p>
@@ -68,6 +119,10 @@ $this->need('header.php');
 
     <?php $this->need('sidebar.php'); ?>
     <script>
+    
+    
+    
+    
         new Vue({
             el: '#root1',
             data: {
@@ -75,6 +130,7 @@ $this->need('header.php');
             },
             mounted: function() {
                 this.add();
+                
             },
             methods: {
                 add: function() {
@@ -84,6 +140,22 @@ $this->need('header.php');
                     }
                 }
             }
-        })
+        });
+
+
+        
+//   var xhr = new XMLHttpRequest();
+//   xhr.open('get', 'https://v1.hitokoto.cn');
+//   xhr.onreadystatechange = function () {
+//     if (xhr.readyState === 4) {
+//       var data = JSON.parse(xhr.responseText);
+//       var hitokoto = document.getElementById('hitokoto_text');
+//       hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+//       hitokoto.innerText = data.hitokoto;
+//     }
+//   }
+//   xhr.send();
+
     </script>
+    
     <?php $this->need('footer.php'); ?>

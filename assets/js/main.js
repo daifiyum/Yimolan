@@ -5,6 +5,8 @@ new Vue({
         titleHead: true,
         rightHead: true,
         secSearch: false,
+        plc: false,
+        plcs: true
     },
     methods: {
         mobSearStart: function() {
@@ -17,9 +19,35 @@ new Vue({
             this.titleHead = true;
             this.rightHead = true;
         },
+        play: function() {
+
+            if (play1.paused) {
+
+                start();
+                this.plc = !this.plc;
+                this.plcs = !this.plcs;
+            } else {
+                closed();
+                this.plc = !this.plc;
+                this.plcs = !this.plcs;
+            }
+
+        }
     },
 });
 
+play1 = document.getElementById("audio");
+
+function start() {
+    play1.play();
+
+}
+
+function closed() {
+    play1.pause();
+
+}
+   
 //导航栏溢出遮罩显示逻辑
 var buts = document.getElementById("mask-father");
 window.onload = function() {
@@ -42,25 +70,7 @@ function formSubmit() {
     document.getElementById("search-bt").submit();
 }
 
-/*时间问候语*/
-(now = new Date()), (hour = now.getHours());
-if (hour < 6) {
-    document.getElementById("timetips").innerHTML = "凌晨好~";
-} else if (hour < 9) {
-    document.getElementById("timetips").innerHTML = "早上好~";
-} else if (hour < 12) {
-    document.getElementById("timetips").innerHTML = "上午好~";
-} else if (hour < 14) {
-    document.getElementById("timetips").innerHTML = "中午好~";
-} else if (hour < 17) {
-    document.getElementById("timetips").innerHTML = "下午好~";
-} else if (hour < 19) {
-    document.getElementById("timetips").innerHTML = "傍晚好~";
-} else if (hour < 22) {
-    document.getElementById("timetips").innerHTML = "晚上好~";
-} else {
-    document.getElementById("timetips").innerHTML = "午夜好~";
-}
+
 
 /*返回顶部*/
 function addloadEvent(func) {
