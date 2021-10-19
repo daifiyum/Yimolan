@@ -56,6 +56,7 @@
                     <!--    </ul>-->
                     <!--    <audio id="audio" src="<?php $this->options->audiosrc() ?>" loop="loop"></audio>-->
                     <!--</div>-->
+                    <?php if (!empty($this->options->headMusic) && in_array('open_headMusic', $this->options->headMusic)) : ?>
                     <div class="msec"> <!--音乐样式2-->
                         <ul v-bind:class="{ music: plc, musics: plcs }" @click="play">
                         <li></li>
@@ -64,7 +65,7 @@
                         </ul>
                         <audio id="audio" src="<?php $this->options->audiosrc() ?>" loop="loop"></audio>
                     </div>
-                    
+                    <?php endif; ?>
                     
                 <i class="icon-search startMobsearch" @click="mobSearStart"></i>
                 </div>

@@ -7,8 +7,30 @@ function themeConfig($form)
   $beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, NULL, _t('ICP备案号'), _t('在这填写ICP备案号'));
   $form->addInput($beian);
   
-  $dimg = new Typecho_Widget_Helper_Form_Element_Text('dimg', NULL, NULL, _t('首页背景图'), _t('在这填写图片的url，当自定义背景图时请务必关闭下面的“必应美图”'));
+  
+  $biimg = new
+    Typecho_Widget_Helper_Form_Element_Checkbox(
+      'biimg',
+      array('open_biimg' => _t('首页必应美图')),
+      array('open_biimg'),
+      _t('必应美图')
+    );
+  $form->addInput($biimg->multiMode());
+  
+  
+  $dimg = new Typecho_Widget_Helper_Form_Element_Text('dimg', NULL, NULL, _t('首页背景图'), _t('在这填写图片的url，当自定义背景图时请务必关闭“必应美图”'));
   $form->addInput($dimg);
+  
+  
+  $headMusic = new
+    Typecho_Widget_Helper_Form_Element_Checkbox(
+      'headMusic',
+      array('open_headMusic' => _t('导航栏音乐显示')),
+      array('open_headMusic'),
+      _t('导航栏音乐')
+    );
+  $form->addInput($headMusic->multiMode());
+  
   
   $audiosrc = new Typecho_Widget_Helper_Form_Element_Text('audiosrc', NULL, NULL, _t('音乐'), _t('在这填写音乐的url'));
   $form->addInput($audiosrc);
@@ -24,14 +46,22 @@ function themeConfig($form)
   $form->addInput($indeximg->multiMode());
   
   
-  $biimg = new
+  $gpt = new Typecho_Widget_Helper_Form_Element_Text('gpt', NULL, NULL, _t('文章右上角图片'), _t('在这填写图片的url'));
+  $form->addInput($gpt);
+  
+  
+  $gptext = new
     Typecho_Widget_Helper_Form_Element_Checkbox(
-      'biimg',
-      array('open_biimg' => _t('首页必应美图')),
-      array('open_biimg'),
-      _t('必应美图')
+      'gptext',
+      array('open_gptext' => _t('文章问候语')),
+      array('open_gptext'),
+      _t('开关问候语')
     );
-  $form->addInput($biimg->multiMode());
+  $form->addInput($gptext->multiMode());
+  
+  $gptexts = new Typecho_Widget_Helper_Form_Element_Text('gptexts', NULL, NULL, _t('问候语文字'), _t('在这自定义问候语'));
+  $form->addInput($gptexts);
+  
 }
 
 

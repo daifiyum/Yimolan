@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <footer>
     <nav>
-        <li>Powered by Typecho Theme ❤️ <a style="color:#007fff" href="https://www.dnxrzl.com/257.html">SimpleBlue</a></li>
+        <li>Powered by <a style="color:#007fff" href="https://typecho.org/">Typecho</a> | Theme by <a style="color:#007fff" href="https://www.dnxrzl.com/257.html">SimpleBlue</a></li>
         <li>There is any infringement,please <a style="color:#007fff" href="mailto:daiqisen131@gmail.com">email</a> me!</li>
         <li>免责声明:如有侵权请<a style="color:#007fff" href="mailto:daiqisen131@gmail.com">邮箱</a>联系!</li>
         <li><a style="color:#007fff" href="https://beian.miit.gov.cn/"><?php $this->options->beian() ?></a></li>

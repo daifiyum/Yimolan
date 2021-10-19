@@ -3,9 +3,14 @@
 <div class="postMain">
     <article class="postText">
         <div id="root2"> <!--文章提示语-->
-            <i class="postNotice animate__animated animate__fadeInDown" v-show="pnotice">空调开放呀~</i>
+            <?php if (!empty($this->options->gptext) && in_array('open_gptext', $this->options->gptext)) : ?>
+            <i class="postNotice animate__animated animate__fadeInDown" v-show="pnotice"><?php $this->options->gptexts() ?></i>
+            <?php endif; ?>
         </div>
-        <div class="postTbox">
+        <div class="postTbox" style="background-image:url(<?php $this->options->gpt() ?>);background-repeat: no-repeat;
+    background-size: 60px 60px;
+    background-position: right center;">
+            
             <?php $this->author->gravatar(32, 'G', NULL, 'postTimg'); ?>
             <div class="innerTbox">
                 <h3><?php $this->author(); ?></h3>
